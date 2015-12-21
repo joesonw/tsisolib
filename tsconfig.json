@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"outDir": "dist",
+		"target": "ES5",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
+	},
+	"compileOnSave": false,
+	"files": [
+		"index.ts"
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES5",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"out": "../builds/tsisolib.js",
+		"declaration": true
+
+	},
+	"compileOnSave": false,
+	"files": [
+		"index.ts"
+	]
+}
