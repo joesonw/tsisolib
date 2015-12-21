@@ -24,6 +24,14 @@ module tsisolib.core {
             }
             return ret;
         }
+        hasChild(child:IIsoDisplayObject):boolean {
+            for (let c of this._children) {
+                if (c == child) {
+                    return true;
+                }
+            }
+            return false;
+        }
         setChildIndex(child:IIsoDisplayObject, index:number) {
             let i = this.getChildIndex(child);
             if (i == index) return;

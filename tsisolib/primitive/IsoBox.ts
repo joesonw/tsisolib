@@ -39,7 +39,6 @@ module tsisolib.primitive {
             if (this._renderData) {
                 return this._renderData;
             }
-            console.log('rendering box');
             let g:createjs.Graphics = new createjs.Graphics();
             let lbb:geom.Point = geom.IsoMath.isoToScreen(new geom.Point(0, 0, 0));
             let rbb:geom.Point = geom.IsoMath.isoToScreen(new geom.Point(this._width, 0, 0));

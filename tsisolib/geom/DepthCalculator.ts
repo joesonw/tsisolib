@@ -4,12 +4,17 @@
 module tsisolib.geom {
     export class DepthCalculator implements IDepthCalculator {
 
-        private depth:number = 0;
-        private visited:Array<boolean> = [];
-        private depthList:Array<number> = [];
-        private dependency:Array<Array<{index:number, child:core.IIsoDisplayObject}>> = [];
+        private depth:number;
+        private visited:Array<boolean>;
+        private depthList:Array<number>;
+        private dependency:Array<Array<{index:number, child:core.IIsoDisplayObject}>>;
 
         calculate(children:Array<core.IIsoDisplayObject>):Array<core.IIsoDisplayObject> {
+            this.visited = [];
+            this.depthList = [];
+            this.dependency = [];
+            this.depth = 0;
+
             let ret:Array<core.IIsoDisplayObject> = [];
             let max = children.length;
             for (let i = 0; i < max; i++) {
@@ -45,7 +50,6 @@ module tsisolib.geom {
                 ret[depth] = children[i];
             }
 
-            console.log(this.depthList)
             return ret;
         }
 

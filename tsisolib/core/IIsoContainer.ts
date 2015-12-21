@@ -4,6 +4,7 @@ module tsisolib.core {
         depthCalculator:geom.IDepthCalculator;
         addChild(child:IIsoDisplayObject);
         addChildAt(child:IIsoDisplayObject, index:number);
+        hasChild(child:IIsoDisplayObject):boolean;
         children:Array<IIsoDisplayObject>;
         setChildIndex(child:IIsoDisplayObject, index:number);
         removeChild(child:IIsoDisplayObject);

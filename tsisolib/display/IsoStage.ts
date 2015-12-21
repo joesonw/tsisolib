@@ -15,6 +15,7 @@ module tsisolib.display {
         public gridSize:number = 10;
         private _camera:core.ICamera;
         private _stage:createjs.Stage;
+        private _grid:core.IIsoDisplayObject;
 
         get stage():createjs.Stage {
             return this._stage;
@@ -24,6 +25,8 @@ module tsisolib.display {
             super();
             this._stage = new createjs.Stage(element);
             this._camera = new core.Camera(width, height);
+            this._width = width;
+            this._height = height;
             this._camera.container = this;
             let self = this;
 
@@ -52,8 +55,8 @@ module tsisolib.display {
                 }
                 return false;
             });
-
-            this.addChild(this.renderGrid());
+            this._grid = this.renderGrid();
+            this.addChild(this._grid);
         }
 
         get camera():core.ICamera {
