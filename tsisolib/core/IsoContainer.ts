@@ -2,13 +2,21 @@
 /// <reference path="../../typings/createjs/createjs.d.ts"/>
 /// <reference path="./IsoDisplayObject.ts"/>
 /// <reference path="../geom/IDepthCalculator.ts"/>
+/// <reference path="../display/ShadowRenderer.ts"/>
+/// <reference path="../display/IShadowRenderer.ts"/>
 /// <reference path="../geom/DepthCalculator.ts"/>
 /// <reference path="../events/Event.ts"/>
+/// <reference path="../bounds/IBounds.ts"/>
+/// <reference path="../bounds/ContainerBounds.ts"/>
 
 module tsisolib.core {
     export abstract class IsoContainer extends IsoDisplayObject implements IIsoContainer {
         protected _children:Array<IIsoDisplayObject> = new Array<IIsoDisplayObject>();
         public depthCalculator:geom.IDepthCalculator = new geom.DepthCalculator();
+        public shadowRenderer:display.IShadowRenderer = new display.ShadowRenderer();
+        get bounds():bounds.IBounds {
+            return new bounds.ContainerBounds(this);
+        }
         addChild(child:IIsoDisplayObject) {
             this._children.push(child);
             child.parent = this;

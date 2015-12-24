@@ -55,8 +55,8 @@ module tsisolib.display {
                 }
                 return false;
             });
-            this._grid = this.renderGrid();
-            this.addChild(this._grid);
+            //this._grid = this.renderGrid();
+            //this.addChild(this._grid);
         }
 
         get camera():core.ICamera {
@@ -87,6 +87,8 @@ module tsisolib.display {
                 d.y = p.y;
                 container.addChild(d);
             }
+            let shadow = this.shadowRenderer.render(this);
+            container.addChildAt(shadow, 1);
             this._renderData = container;
             this._camera.render();
             return container;

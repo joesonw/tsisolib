@@ -1,12 +1,18 @@
 /// <reference path="./IIsoDisplayObject.ts"/>
 /// <reference path="../../typings/createjs/createjs.d.ts"/>
 /// <reference path="../events/Event.ts"/>
+/// <reference path="../bounds/IBounds.ts"/>
+/// <reference path="../bounds/PrimitiveBounds.ts"/>
 
 module tsisolib.core {
     export abstract class IsoDisplayObject extends createjs.EventDispatcher implements IIsoDisplayObject {
             protected _x:number = 0;
             public parent:IIsoDisplayObject;
             protected _renderData:createjs.DisplayObject;
+
+            get bounds():bounds.IBounds {
+                return new bounds.PrimitiveBounds(this);
+            }
             get renderData():createjs.DisplayObject {
                 return this._renderData;
             }
