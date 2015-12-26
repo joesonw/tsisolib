@@ -72,7 +72,7 @@ module tsisolib.core {
             data.y = this._screenHeight / 2 - p.y;
             data.scaleX = this._scale;
             data.scaleY = this._scale;
-            this._container.renderData = data;
+            //this._container.renderData = data;
         }
     }
 }

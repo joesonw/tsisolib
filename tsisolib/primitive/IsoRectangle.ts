@@ -32,7 +32,9 @@ module tsisolib.primitive {
             for (let pt of points) {
                 this.points.push(geom.IsoMath.isoToScreen(pt));
             }
-            return super.render();
+            let ret = super.render();
+            ret.cache(this.points[3].x, 0, this.points[1].x - this.points[3].x , this.points[2].y);
+            return ret;
         }
 
     }

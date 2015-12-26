@@ -12,10 +12,8 @@
 
 module tsisolib.display {
     export class IsoStage extends core.IsoContainer {
-        public gridSize:number = 10;
         private _camera:core.ICamera;
         private _stage:createjs.Stage;
-        private _grid:core.IIsoDisplayObject;
 
         get stage():createjs.Stage {
             return this._stage;
@@ -55,8 +53,6 @@ module tsisolib.display {
                 }
                 return false;
             });
-            //this._grid = this.renderGrid();
-            //this.addChild(this._grid);
         }
 
         get camera():core.ICamera {
@@ -92,22 +88,6 @@ module tsisolib.display {
             this._renderData = container;
             this._camera.render();
             return container;
-        }
-
-        private renderGrid():core.IIsoContainer {
-            let grid = new IsoScene();
-            grid.depthCalculator = null;
-            for (let i = 0; i < Math.ceil(this._width / this.gridSize); i++) {
-                for (let j = 0; j < Math.ceil(this._height / this.gridSize); j++) {
-                    let r:primitive.IsoRectangle = new primitive.IsoRectangle();
-                    r.width = this.gridSize;
-                    r.length = this.gridSize;
-                    r.x = i * this.gridSize;
-                    r.y = j * this.gridSize;
-                    grid.addChild(r);
-                }
-            }
-            return grid;
         }
     }
 }

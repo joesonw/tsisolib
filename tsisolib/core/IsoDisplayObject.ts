@@ -19,6 +19,10 @@ module tsisolib.core {
             set renderData(data:createjs.DisplayObject) {
                 this._renderData = data;
             }
+            flush() {
+                this._renderData = null;
+                if (this.parent) this.parent.flush();
+            }
     		get x():number {
     			return this._x;
     		}

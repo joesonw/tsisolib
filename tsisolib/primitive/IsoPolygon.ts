@@ -16,7 +16,6 @@ module tsisolib.primitive {
         constructor() {
             super();
             this._stroke = new graphics.Stroke();
-            this._fill = new graphics.Fill('rgba(55, 66, 82, 0.5)');
         }
 
         set stroke(stroke:graphics.IStroke) {
@@ -24,12 +23,16 @@ module tsisolib.primitive {
         }
 
         set fill(fill:graphics.IFill) {
-            this.fill = fill;
+            this._fill = fill;
         }
 
         render():createjs.DisplayObject {
+            if (this._renderData) {
+                return this._renderData;
+            }
             let g:createjs.Graphics = new createjs.Graphics();
             let fill:graphics.IFill = this._fill;
+
             let stroke:graphics.IStroke;
 
             if (fill) {
@@ -37,16 +40,17 @@ module tsisolib.primitive {
             }
             g.moveTo(this.points[0].x, this.points[0].y);
 
-            let i = 1;
+            let i = 0;
             let l = this.points.length;
-            stroke = this.stroke || new graphics.Stroke();
+            stroke = this._stroke || new graphics.Stroke();
             stroke.apply(g);
             while (i < l) {
                 g.lineTo(this.points[i].x, this.points[i].y);
                 i++;
             }
             g.lineTo(this.points[0].x, this.points[0].y);
-            return new createjs.Shape(g);
+            this._renderData = new createjs.Shape(g);
+            return this._renderData;
         }
 
     }

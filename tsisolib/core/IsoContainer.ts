@@ -20,10 +20,12 @@ module tsisolib.core {
         addChild(child:IIsoDisplayObject) {
             this._children.push(child);
             child.parent = this;
+            this.flush();
         }
         addChildAt(child:IIsoDisplayObject, index:number) {
             this._children.splice(index, 0 ,child);
             child.parent = this;
+            this.flush();
         }
         get children():Array<IIsoDisplayObject> {
             let ret = [];
@@ -51,6 +53,7 @@ module tsisolib.core {
                     this._children.splice(index, 0, child);
                 }
             }
+            this.flush();
         }
         getChildAt(index:number):IIsoDisplayObject {
             return this._children[index] || null;
@@ -80,6 +83,7 @@ module tsisolib.core {
                 ret = this._children[index];
                 this._children.splice(index, 1);
             }
+            this.flush();
             return ret;
         }
         removeAll() {
@@ -87,6 +91,7 @@ module tsisolib.core {
                 child.parent = null;
             }
             this._children = [];
+            this.flush();
         }
     }
 }

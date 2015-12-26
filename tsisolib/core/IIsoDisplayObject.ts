@@ -5,6 +5,7 @@ module tsisolib.core {
         x:number;
         y:number;
         z:number;
+        flush();
         width:number;
         length:number;
         height:number;
